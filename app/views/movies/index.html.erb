@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
+<%= form_tag(movies_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if @movies.count > 0 %>
 <h1>Movies</h1>
 
 <div id="movies">
   <% @movies.each do |movie| %>
     <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New movie", new_movie_path %>
+<% else %>
+  <p>
+    0 movie(s) found matching your seach term
+  </p>
+<% end %>

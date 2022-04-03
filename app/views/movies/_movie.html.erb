@@ -1,17 +1,23 @@
 <div id="<%= dom_id movie %>">
   <p>
-    <strong>Name:</strong>
-    <%= movie.name %>
+    <strong><%= movie.name %></strong> - <%= movie.year %>
   </p>
 
   <p>
-    <strong>Description:</strong>
     <%= movie.description %>
   </p>
 
-  <p>
-    <strong>Year:</strong>
-    <%= movie.year %>
-  </p>
-
+  <div id="actors">
+    <% movie.actor_filming_locations.each do |afc| %>
+      <p><%= afc.actor.name %> - <%= afc.filming_location.name %> - <%= afc.filming_location.country.name %></p>
+    <% end %>
+  </div>
+  <br/>
+  <div id="reviews">
+    <% movie.reviews.each do |review| %>
+      <%= render review %>
+    <% end %>
+  </div>
+  <br/>
+  <br/>
 </div>
