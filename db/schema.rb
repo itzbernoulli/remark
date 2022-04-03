@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_03_133023) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_03_155601) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "actor_filming_locations", force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.integer "actor_id", null: false
-    t.integer "filming_location_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "actor_id", null: false
+    t.bigint "filming_location_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["actor_id"], name: "index_actor_filming_locations_on_actor_id"
@@ -42,15 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_03_133023) do
 
   create_table "filming_locations", force: :cascade do |t|
     t.string "name"
-    t.integer "country_id", null: false
+    t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_filming_locations_on_country_id"
   end
 
   create_table "movie_directors", force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.integer "director_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "director_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["director_id"], name: "index_movie_directors_on_director_id"
@@ -63,13 +66,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_03_133023) do
     t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "average_review", default: 0.0
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "stars"
     t.string "comment"
-    t.integer "user_id", null: false
-    t.integer "movie_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_reviews_on_movie_id"

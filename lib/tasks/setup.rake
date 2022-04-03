@@ -22,7 +22,9 @@ namespace :setup do
     CSV.foreach(Rails.root.join('reviews.csv'), headers: true) do |row|
       user = User.where(name: row['User']).first_or_create
       movie = Movie.find_by_name(row['Movie'])
-      Review.create(movie:, user:, stars: row['Stars'], comment: row['Review'])
+      review = Review.create(movie:, user:, stars: row['Stars'], comment: row['Review'])
+      average_review = (movie.average_review + review.stars) / movie.reviews.count + 1
+      movie.update_column(:average_review, average_review)
     end
   end
 end
