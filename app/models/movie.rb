@@ -6,6 +6,6 @@ class Movie < ApplicationRecord
   has_many :actors, through: :actor_filming_locations
   has_many :directors, through: :movie_directors
 
-  scope :all_accociations, -> { includes(reviews: [:user], actor_filming_locations: [:actor,filming_location: [:country]])}
-  scope :actor_search, ->(name) { where("actors.name LIKE ?", "%#{name}%").references(:actors)}
+  scope :all_associations, -> { includes(reviews: [:user], actor_filming_locations: [:actor, { filming_location: [:country] }] ) }
+  scope :actor_search, ->(name) { where('actors.name LIKE ?', "%#{name}%").references(:actors) }
 end
