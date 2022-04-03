@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_03_133023) do
   end
 
   create_table "countries", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,14 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_03_133023) do
     t.string "name"
     t.string "description"
     t.string "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "name"
-    t.string "comment"
-    t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
