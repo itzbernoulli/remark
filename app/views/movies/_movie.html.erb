@@ -7,13 +7,15 @@
     <%= movie.description %>
   </p>
 
+  <h5>Actors and Filming Locations</h5>
   <div id="actors">
     <% movie.actor_filming_locations.each do |afc| %>
       <p><%= afc.actor.name %> - <%= afc.filming_location.name %> - <%= afc.filming_location.country.name %></p>
     <% end %>
   </div>
   <br/>
-  <div id="reviews">
+  <h5>Reviews</h5>
+  <div id="reviews" class="row">
     <% movie.reviews.each do |review| %>
       <%= render review %>
     <% end %>

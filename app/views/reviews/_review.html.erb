@@ -1,17 +1,19 @@
-<div id="<%= dom_id review %>">
-  <p>
-    <strong>Stars:</strong>
-    <%= review.stars %>
-  </p>
+<div id="<%= dom_id review %>" class="col-4">
+  <div class="panel panel-default border m-2 p-2">
+    <div class="panel-body">
+      <p>
+        <%= review.user.name %>
+      </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= review.comment %>
-  </p>
+      <p>
+        <strong>Comment:</strong>
+        <%= review.comment %>
+      </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= review.user.name %>
-  </p>
-  
+      <p>
+        <strong>Rating:</strong>
+        <%= review.stars %>
+      </p>
+    </div>
+  </div>
 </div>
