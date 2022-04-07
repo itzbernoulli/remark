@@ -16,7 +16,7 @@ This project is written in Ruby 3.1.0 and Rails 7.0.2 and uses a Postgresql data
 
 After pulling the project, 
 
-```rails db:create db:migrate setup:movies setup:reviews```
+```rails setup:db```
 
 This will setup the database to be ready for use.
-Next run ```rails s``` to get the project started on the default port 3000 and visit ```localhost:3000``` to view the application.
+Next run ```rails s``` to get the project started on the default port 3000 and visit ```localhost:3000``` to view the application in the browser.

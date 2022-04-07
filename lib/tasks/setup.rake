@@ -1,5 +1,10 @@
 namespace :setup do
   require 'csv'
+
+  task db: ['db:drop', 'db:create', 'db:migrate', 'reviews'] do
+    puts 'Database Setup Complete'
+  end
+
   desc 'This Task will setup the db using movies.csv and reviews.csv'
   task movies: :environment do
     CSV.foreach(Rails.root.join('movies.csv'), headers: true) do |row|
@@ -18,7 +23,7 @@ namespace :setup do
   end
 
   desc 'This task will attach all reviews to movies'
-  task reviews: :environment do
+  task reviews: %i[environment movies] do
     CSV.foreach(Rails.root.join('reviews.csv'), headers: true) do |row|
       user = User.where(name: row['User']).first_or_create
       movie = Movie.find_by_name(row['Movie'])
